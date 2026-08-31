@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Boutique e-commerce" description="Parcours d'achat complet — accueil, catégorie, fiche produit, panier, tunnel 4 étapes, confirmation. Prix en FCFA, paiements mobiles ivoiriens." -->
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:var(--color-bg)}</style></helmet>
+<div style="min-width:1440px;font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)">
+
+<div style="background:var(--color-text);color:var(--color-neutral-100);font-size:12px;padding:7px 80px;display:flex;gap:24px;align-items:center"><span>Livraison Abidjan &amp; intérieur du pays</span><span style="opacity:.4">·</span><span>Retrait en boutique gratuit</span><span style="margin-left:auto">Support : +225 27 22 00 00 00</span></div>
+
+<header style="background:var(--color-neutral-100);border-bottom:2px solid var(--color-divider)">
+<div style="display:flex;align-items:center;gap:32px;padding:18px 80px">
+<a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;margin-right:8px"><span style="display:grid;place-items:center;width:38px;height:38px;background:var(--color-accent);color:var(--color-neutral-100);font-family:var(--font-heading);font-weight:800;font-size:17px">G2</span><span style="font-family:var(--font-heading);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.05">G2Y CONSEIL<span style="display:block;font-size:10px;font-weight:400;letter-spacing:.14em;opacity:.55">BUREAU &amp; SCOLAIRE</span></span></a>
+<div style="flex:1;display:flex;border:1px solid var(--color-divider);border-radius:4px;overflow:hidden;background:var(--color-bg);max-width:620px">
+<select class="input" style="width:200px;border:0;border-right:1px solid var(--color-divider);border-radius:0;background:transparent;font-size:13px"><option>Toutes catégories</option><option>Papeterie</option><option>Livres et manuels</option><option>Mobilier de bureau</option><option>Fournitures scolaires</option><option>Consommables d'impression</option><option>Rangement et classement</option><option>Informatique</option></select>
+<input class="input" style="border:0;border-radius:0;background:transparent" placeholder="Rechercher un article, une référence…" />
+<button class="btn btn-primary" style="border-radius:0;padding-inline:20px" onClick="{{ goList }}">Rechercher</button>
+</div>
+<a href="#" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;font-size:13px"><span style="display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--color-divider);border-radius:4px">☺</span><span>Mon compte<span style="display:block;opacity:.55;font-size:11px">Connexion</span></span></a>
+<a href="#" onClick="{{ goCart }}" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;font-size:13px"><span style="position:relative;display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--color-divider);border-radius:4px">▤<span style="position:absolute;top:-7px;right:-7px;min-width:18px;height:18px;display:grid;place-items:center;background:var(--color-accent);color:var(--color-neutral-100);font-size:11px;font-weight:800;border-radius:9px;padding:0 4px">{{ cartCount }}</span></span><span>Panier<span style="display:block;opacity:.55;font-size:11px">{{ subtotalLabel }}</span></span></a>
+</div>
+<nav style="display:flex;gap:28px;padding:0 80px 12px;font-size:13px"><a href="#" onClick="{{ goList }}" style="color:var(--color-accent);text-decoration:none;font-weight:600">Papeterie</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Livres et manuels</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Mobilier de bureau</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Fournitures scolaires</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Consommables d'impression</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Rangement et classement</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none">Informatique</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;margin-left:auto;opacity:.6">Promotions</a></nav>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section style="display:grid;grid-template-columns:1.05fr .95fr;background:var(--color-accent);color:var(--color-neutral-100)">
+<div style="padding:64px 80px 60px"><span style="display:inline-block;font-size:11px;letter-spacing:.16em;border:1px solid rgba(255,255,255,.5);padding:4px 10px;margin-bottom:22px">RENTRÉE 2026</span><h1 style="font-size:60px;line-height:.98;margin:0 0 18px;max-width:12ch">TOUT LE BUREAU, TOUTE L'ÉCOLE.</h1><p style="font-size:17px;max-width:44ch;opacity:.92;margin-bottom:26px">Packs scolaires prêts à partir, mobilier et consommables livrés à Abidjan en 24 h. Jusqu'à −25 % sur les lots.</p><div style="display:flex;gap:12px"><button class="btn" style="background:var(--color-neutral-100);color:var(--color-text);border-radius:4px;padding:12px 22px;font-size:15px" onClick="{{ goList }}">Acheter maintenant</button><button class="btn" style="border:1px solid rgba(255,255,255,.6);color:var(--color-neutral-100);border-radius:4px;padding:12px 22px;font-size:15px" onClick="{{ goList }}">Voir les packs scolaires</button></div></div>
+<div style="min-height:380px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.10) 0 10px,rgba(0,0,0,.16) 10px 20px);display:grid;place-items:center"><span style="font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.08em;background:rgba(0,0,0,.35);padding:8px 14px">visuel hero — rentrée scolaire</span></div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider);background:var(--color-neutral-100)">
+<div style="padding:22px 80px;border-right:1px solid var(--color-divider)"><strong style="display:block;font-family:var(--font-heading);font-size:14px">Livraison 24 h à Abidjan</strong><span style="font-size:12px;opacity:.6">Intérieur du pays sous 72 h</span></div>
+<div style="padding:22px 24px;border-right:1px solid var(--color-divider)"><strong style="display:block;font-family:var(--font-heading);font-size:14px">Paiement sécurisé</strong><span style="font-size:12px;opacity:.6">Mobile money, carte, à la livraison</span></div>
+<div style="padding:22px 24px;border-right:1px solid var(--color-divider)"><strong style="display:block;font-family:var(--font-heading);font-size:14px">Retrait en boutique</strong><span style="font-size:12px;opacity:.6">Cocody Angré, sous 2 h</span></div>
+<div style="padding:22px 24px"><strong style="display:block;font-family:var(--font-heading);font-size:14px">Support 6j/7</strong><span style="font-size:12px;opacity:.6">Devis entreprise et écoles</span></div>
+</section>
+
+<section style="padding:56px 80px"><div style="display:flex;align-items:baseline;gap:16px;margin-bottom:22px"><h2 style="margin:0">Catégories</h2><span style="font-size:13px;opacity:.55">7 familles d'articles</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--color-divider)">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="7"><a href="#" onClick="{{ c.onOpen }}" style="background:var(--color-neutral-100);padding:22px 20px 20px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;min-height:118px"><span style="font-size:22px;color:var(--color-accent)">{{ c.icone }}</span><strong style="font-family:var(--font-heading);font-size:15px;line-height:1.15">{{ c.nom }}</strong><span style="font-size:12px;opacity:.55;margin-top:auto">{{ c.compte }} articles</span></a></sc-for>
+</div></section>
+
+<section style="padding:0 80px 56px"><div style="display:flex;align-items:baseline;gap:16px;margin-bottom:20px;border-top:2px solid var(--color-divider);padding-top:28px"><h2 style="margin:0">Meilleures ventes</h2><a href="#" onClick="{{ goList }}" style="margin-left:auto;font-size:13px">Tout voir</a></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+<sc-for list="{{ bestSellers }}" as="p" hint-placeholder-count="4"><article style="background:var(--color-neutral-100);border-radius:4px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden"><a href="#" onClick="{{ p.onOpen }}" style="position:relative;display:block;height:190px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 9px,var(--color-neutral-300) 9px 18px)"><span style="position:absolute;inset:auto 10px 10px;font-family:ui-monospace,monospace;font-size:10px;opacity:.65">{{ p.nom }}</span><span style="position:absolute;top:10px;left:10px;background:var(--color-accent);color:var(--color-neutral-100);font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px">{{ p.badge }}</span></a><div style="padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1"><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">{{ p.cat }}</span><a href="#" onClick="{{ p.onOpen }}" style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:1.2;text-decoration:none;color:inherit">{{ p.nom }}</a><span style="font-size:12px;color:var(--color-accent-700)">{{ p.etoiles }} <span style="opacity:.55;color:var(--color-text)">({{ p.avis }})</span></span><div style="display:flex;align-items:baseline;gap:8px;margin-top:auto"><strong style="font-family:var(--font-heading);font-size:20px">{{ p.prixLabel }}</strong><span style="font-size:12px;opacity:.45;text-decoration:line-through">{{ p.prixBarreLabel }}</span></div><span style="font-size:11px;color:var(--color-accent-700)">{{ p.stock }}</span><button class="btn btn-primary" style="border-radius:4px;justify-content:flex-start;padding:10px 14px" onClick="{{ p.onAdd }}">Ajouter au panier</button></div></article></sc-for>
+</div></section>
+
+<section style="margin:0 80px 56px;background:var(--color-text);color:var(--color-neutral-100);border-radius:4px;display:grid;grid-template-columns:1fr 1fr"><div style="padding:44px 44px 40px"><span style="font-size:11px;letter-spacing:.16em;color:var(--color-accent-400)">PACKS &amp; LOTS</span><h2 style="margin:12px 0 12px;font-size:34px;line-height:1.05;color:var(--color-neutral-100)">Packs scolaires CP à Terminale, prêts en 1 clic.</h2><p style="opacity:.75;max-width:46ch">Cahiers, protège-cahiers, stylos, règles et cartable — composés par niveau. Lots bureau pour entreprises : 5 % à 18 % de remise dès 10 unités.</p><button class="btn btn-primary" style="border-radius:4px;padding:11px 20px" onClick="{{ goList }}">Composer un pack</button></div><div style="background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 10px,rgba(255,255,255,.12) 10px 20px);display:grid;place-items:center;min-height:260px"><span style="font-family:ui-monospace,monospace;font-size:11px;opacity:.6">visuel pack scolaire</span></div></section>
+
+<section style="padding:0 80px 56px"><div style="border-top:2px solid var(--color-divider);padding-top:28px;margin-bottom:20px;display:flex;align-items:baseline;gap:16px"><h2 style="margin:0">Nouveautés</h2><a href="#" onClick="{{ goList }}" style="margin-left:auto;font-size:13px">Tout voir</a></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+<sc-for list="{{ newArrivals }}" as="p" hint-placeholder-count="4"><article style="background:var(--color-neutral-100);border-radius:4px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden"><a href="#" onClick="{{ p.onOpen }}" style="position:relative;display:block;height:190px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 9px,var(--color-neutral-300) 9px 18px)"><span style="position:absolute;inset:auto 10px 10px;font-family:ui-monospace,monospace;font-size:10px;opacity:.65">{{ p.nom }}</span></a><div style="padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1"><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">{{ p.cat }}</span><a href="#" onClick="{{ p.onOpen }}" style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:1.2;text-decoration:none;color:inherit">{{ p.nom }}</a><span style="font-size:12px;color:var(--color-accent-700)">{{ p.etoiles }} <span style="opacity:.55;color:var(--color-text)">({{ p.avis }})</span></span><strong style="font-family:var(--font-heading);font-size:20px;margin-top:auto">{{ p.prixLabel }}</strong><span style="font-size:11px;opacity:.6">{{ p.stock }}</span><button class="btn btn-secondary" style="border-radius:4px;justify-content:flex-start;padding:10px 14px" onClick="{{ p.onAdd }}">Ajouter au panier</button></div></article></sc-for>
+</div></section>
+
+<section style="padding:0 80px 64px"><div style="border-top:2px solid var(--color-divider);padding-top:28px;margin-bottom:20px"><h2 style="margin:0">Avis clients</h2></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px"><sc-for list="{{ avisClients }}" as="a" hint-placeholder-count="3"><blockquote style="margin:0;background:var(--color-neutral-100);border-radius:4px;padding:22px;box-shadow:var(--shadow-sm)"><span style="color:var(--color-accent);font-size:13px">{{ a.etoiles }}</span><p style="font-size:14px;margin:10px 0 14px">{{ a.texte }}</p><footer style="font-size:12px;opacity:.6">{{ a.auteur }} — {{ a.lieu }}</footer></blockquote></sc-for></div></section>
+</sc-if>
+
+<sc-if value="{{ isList }}">
+<section style="padding:26px 80px 12px"><nav style="font-size:12px;opacity:.6;margin-bottom:14px"><a href="#" onClick="{{ goHome }}" style="color:inherit">Accueil</a> / <span>Papeterie</span></nav><div style="display:flex;align-items:baseline;gap:14px"><h1 style="margin:0;font-size:36px">Papeterie</h1><span style="font-size:13px;opacity:.6">{{ listCount }} résultats</span></div></section>
+<section style="display:grid;grid-template-columns:250px 1fr;gap:36px;padding:20px 80px 64px;align-items:start">
+<aside style="background:var(--color-neutral-100);border-radius:4px;padding:20px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:20px">
+<div><h6 style="margin:0 0 10px">Sous-catégorie</h6><div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" checked />Cahiers et blocs</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Stylos et écriture</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Papier et ramettes</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Petit matériel</label></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:18px"><h6 style="margin:0 0 10px">Prix (FCFA)</h6><div style="display:flex;gap:8px"><input class="input" style="border-radius:4px" placeholder="Min" /><input class="input" style="border-radius:4px" placeholder="Max" /></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:18px"><h6 style="margin:0 0 10px">Marque</h6><div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Bic</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Clairefontaine</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Maped</label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="accent-color:var(--color-accent)" />Navigator</label></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:18px"><h6 style="margin:0 0 10px">Disponibilité</h6><div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><label class="radio"><input type="radio" name="dispo" checked /><span class="dot"></span>Tous</label><label class="radio"><input type="radio" name="dispo" /><span class="dot"></span>En stock</label><label class="radio"><input type="radio" name="dispo" /><span class="dot"></span>Retrait boutique</label></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:18px"><label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" style="accent-color:var(--color-accent)" />En promotion uniquement</label></div>
+</aside>
+<div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;border-bottom:2px solid var(--color-divider);padding-bottom:14px"><span style="font-size:12px;opacity:.6">Trier par</span><select class="input" style="width:230px;border-radius:4px" onChange="{{ onSort }}"><option value="pertinence">Pertinence</option><option value="asc">Prix croissant</option><option value="desc">Prix décroissant</option><option value="new">Nouveautés</option></select><span style="margin-left:auto;font-size:12px;opacity:.6">Affichage 1–{{ listCount }} sur 48</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+<sc-for list="{{ listProducts }}" as="p" hint-placeholder-count="9"><article style="background:var(--color-neutral-100);border-radius:4px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden"><a href="#" onClick="{{ p.onOpen }}" style="position:relative;display:block;height:180px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 9px,var(--color-neutral-300) 9px 18px)"><span style="position:absolute;inset:auto 10px 10px;font-family:ui-monospace,monospace;font-size:10px;opacity:.65">{{ p.nom }}</span><span style="position:absolute;top:10px;left:10px;background:var(--color-accent);color:var(--color-neutral-100);font-size:10px;font-weight:800;padding:3px 8px">{{ p.badge }}</span></a><div style="padding:14px;display:flex;flex-direction:column;gap:8px;flex:1"><a href="#" onClick="{{ p.onOpen }}" style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:1.2;text-decoration:none;color:inherit">{{ p.nom }}</a><span style="font-size:12px;color:var(--color-accent-700)">{{ p.etoiles }} <span style="opacity:.55;color:var(--color-text)">({{ p.avis }})</span></span><div style="display:flex;align-items:baseline;gap:8px;margin-top:auto"><strong style="font-family:var(--font-heading);font-size:19px">{{ p.prixLabel }}</strong><span style="font-size:12px;opacity:.45;text-decoration:line-through">{{ p.prixBarreLabel }}</span></div><span style="font-size:11px;opacity:.65">{{ p.stock }}</span><button class="btn btn-primary" style="border-radius:4px;justify-content:flex-start;padding:10px 14px" onClick="{{ p.onAdd }}">Ajouter au panier</button></div></article></sc-for>
+</div>
+<div style="display:flex;gap:6px;align-items:center;margin-top:32px"><button class="btn btn-secondary" style="border-radius:4px">Précédent</button><button class="btn btn-primary" style="border-radius:4px;width:38px;justify-content:center">1</button><button class="btn btn-secondary" style="border-radius:4px;width:38px;justify-content:center">2</button><button class="btn btn-secondary" style="border-radius:4px;width:38px;justify-content:center">3</button><span style="opacity:.5;padding:0 6px">…</span><button class="btn btn-secondary" style="border-radius:4px;width:38px;justify-content:center">6</button><button class="btn btn-secondary" style="border-radius:4px;margin-left:6px">Suivant</button></div>
+</div></section>
+</sc-if>
+
+<sc-if value="{{ isProduct }}">
+<section style="padding:26px 80px 0"><nav style="font-size:12px;opacity:.6"><a href="#" onClick="{{ goHome }}" style="color:inherit">Accueil</a> / <a href="#" onClick="{{ goList }}" style="color:inherit">{{ product.cat }}</a> / <span>{{ product.nom }}</span></nav></section>
+<section style="display:grid;grid-template-columns:1.15fr 1fr;gap:48px;padding:24px 80px 48px;align-items:start">
+<div><div style="height:440px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 10px,var(--color-neutral-300) 10px 20px);border-radius:4px;display:grid;place-items:center"><span style="font-family:ui-monospace,monospace;font-size:12px;opacity:.65">photo produit — {{ product.nom }}</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px"><div style="height:86px;border-radius:4px;border:2px solid var(--color-accent);background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 8px,var(--color-neutral-300) 8px 16px)"></div><div style="height:86px;border-radius:4px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 8px,var(--color-neutral-300) 8px 16px)"></div><div style="height:86px;border-radius:4px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 8px,var(--color-neutral-300) 8px 16px)"></div><div style="height:86px;border-radius:4px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 8px,var(--color-neutral-300) 8px 16px)"></div></div></div>
+<div>
+<span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.5">{{ product.cat }}</span>
+<h1 style="margin:8px 0 10px;font-size:34px">{{ product.nom }}</h1>
+<div style="display:flex;align-items:center;gap:12px;font-size:13px;margin-bottom:20px"><span style="color:var(--color-accent)">{{ product.etoiles }}</span><span style="opacity:.6">{{ product.avis }} avis</span><span style="opacity:.4">·</span><span style="opacity:.6">Réf. {{ product.ref }}</span></div>
+<div style="border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:18px 0;display:flex;align-items:baseline;gap:14px"><strong style="font-family:var(--font-heading);font-size:38px;line-height:1">{{ product.prixLabel }}</strong><span style="font-size:15px;opacity:.45;text-decoration:line-through">{{ product.prixBarreLabel }}</span><span class="tag tag-accent" style="border-radius:3px;font-weight:800">{{ product.remise }}</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:13px;padding:16px 0"><span style="color:var(--color-accent-700);font-weight:600">{{ product.stock }}</span><span style="opacity:.7">Livraison estimée à Abidjan : 24 à 48 h · Retrait boutique sous 2 h</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;padding-bottom:16px"><span style="font-size:12px;opacity:.65">Format</span><div class="seg" style="border-radius:4px;align-self:flex-start"><label class="seg-opt"><input type="radio" name="fmt" checked />Unité</label><label class="seg-opt"><input type="radio" name="fmt" />Lot de 10</label><label class="seg-opt"><input type="radio" name="fmt" />Carton de 50</label></div></div>
+<div style="display:flex;gap:12px;align-items:stretch;margin-bottom:12px"><div style="display:flex;align-items:center;border:1px solid var(--color-divider);border-radius:4px;background:var(--color-neutral-100)"><button class="btn" style="width:40px;justify-content:center;font-size:18px" onClick="{{ decQty }}">−</button><span style="width:44px;text-align:center;font-family:var(--font-heading);font-weight:800">{{ qty }}</span><button class="btn" style="width:40px;justify-content:center;font-size:18px" onClick="{{ incQty }}">+</button></div><button class="btn btn-primary" style="flex:1;border-radius:4px;justify-content:flex-start;padding:13px 18px;font-size:15px" onClick="{{ addCurrent }}">Ajouter au panier</button></div>
+<button class="btn btn-secondary" style="width:100%;border-radius:4px;justify-content:flex-start;padding:13px 18px;font-size:15px" onClick="{{ buyNow }}">Acheter maintenant</button>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;font-size:11px"><span class="tag tag-neutral" style="border-radius:3px">Orange Money</span><span class="tag tag-neutral" style="border-radius:3px">MTN MoMo</span><span class="tag tag-neutral" style="border-radius:3px">Wave</span><span class="tag tag-neutral" style="border-radius:3px">Moov Money</span><span class="tag tag-neutral" style="border-radius:3px">Carte bancaire</span><span class="tag tag-neutral" style="border-radius:3px">Paiement à la livraison</span></div>
+</div></section>
+
+<section style="padding:0 80px 48px"><div style="display:flex;gap:0;border-bottom:2px solid var(--color-divider)"><button class="btn" style="border-radius:0;padding:12px 20px;border-bottom:3px solid var(--color-accent);color:var(--color-accent)" onClick="{{ setTabDesc }}">Description</button><button class="btn" style="border-radius:0;padding:12px 20px" onClick="{{ setTabCarac }}">Caractéristiques</button><button class="btn" style="border-radius:0;padding:12px 20px" onClick="{{ setTabLiv }}">Livraison et retours</button><button class="btn" style="border-radius:0;padding:12px 20px" onClick="{{ setTabAvis }}">Avis ({{ product.avis }})</button></div>
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:48px;padding-top:28px"><div><p style="max-width:64ch">{{ product.description }}</p><h4 style="margin-top:24px">Contenu du lot</h4><ul style="font-size:14px;padding-left:20px;margin:0;display:flex;flex-direction:column;gap:5px"><sc-for list="{{ product.contenu }}" as="c" hint-placeholder-count="4"><li>{{ c }}</li></sc-for></ul></div>
+<div><h4 style="margin:0 0 12px">Caractéristiques techniques</h4><table class="table"><tbody><sc-for list="{{ product.specs }}" as="s" hint-placeholder-count="5"><tr><td style="opacity:.6;width:45%">{{ s.k }}</td><td style="font-weight:600">{{ s.v }}</td></tr></sc-for></tbody></table></div></div></section>
+
+<section style="padding:0 80px 64px"><div style="border-top:2px solid var(--color-divider);padding-top:28px;margin-bottom:20px"><h2 style="margin:0">Souvent achetés ensemble</h2></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px"><sc-for list="{{ similar }}" as="p" hint-placeholder-count="4"><article style="background:var(--color-neutral-100);border-radius:4px;box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column"><a href="#" onClick="{{ p.onOpen }}" style="display:block;height:150px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 9px,var(--color-neutral-300) 9px 18px);position:relative"><span style="position:absolute;inset:auto 10px 10px;font-family:ui-monospace,monospace;font-size:10px;opacity:.65">{{ p.nom }}</span></a><div style="padding:14px;display:flex;flex-direction:column;gap:8px;flex:1"><a href="#" onClick="{{ p.onOpen }}" style="font-family:var(--font-heading);font-weight:800;font-size:14px;text-decoration:none;color:inherit;line-height:1.2">{{ p.nom }}</a><strong style="font-family:var(--font-heading);font-size:17px;margin-top:auto">{{ p.prixLabel }}</strong><button class="btn btn-secondary" style="border-radius:4px;justify-content:flex-start" onClick="{{ p.onAdd }}">Ajouter</button></div></article></sc-for></div></section>
+</sc-if>
+
+<sc-if value="{{ isCart }}">
+<section style="padding:26px 80px 64px"><nav style="font-size:12px;opacity:.6;margin-bottom:14px"><a href="#" onClick="{{ goHome }}" style="color:inherit">Accueil</a> / <span>Panier</span></nav><h1 style="margin:0 0 24px;font-size:36px">Mon panier <span style="font-size:18px;font-weight:400;opacity:.55">{{ cartCount }} article(s)</span></h1>
+<sc-if value="{{ cartEmpty }}"><div style="background:var(--color-neutral-100);border-radius:4px;padding:56px;text-align:left;box-shadow:var(--shadow-sm)"><h3 style="margin:0 0 8px">Votre panier est vide</h3><p style="opacity:.65;max-width:48ch">Parcourez les meilleures ventes ou composez un pack scolaire pour commencer.</p><button class="btn btn-primary" style="border-radius:4px" onClick="{{ goList }}">Voir le catalogue</button></div></sc-if>
+<sc-if value="{{ cartFilled }}"><div style="display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:start">
+<div style="background:var(--color-neutral-100);border-radius:4px;box-shadow:var(--shadow-sm)">
+<sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2"><div style="display:grid;grid-template-columns:110px 1fr auto;gap:18px;padding:18px;border-bottom:1px solid var(--color-divider);align-items:start"><div style="height:96px;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 8px,var(--color-neutral-300) 8px 16px);border-radius:4px"></div><div><strong style="font-family:var(--font-heading);font-size:15px;display:block">{{ l.nom }}</strong><span style="font-size:12px;opacity:.55;display:block;margin:4px 0 10px">Réf. {{ l.ref }} · {{ l.prixLabel }} l'unité</span><div style="display:flex;gap:14px;align-items:center"><div style="display:flex;align-items:center;border:1px solid var(--color-divider);border-radius:4px"><button class="btn" style="width:32px;height:32px;justify-content:center" onClick="{{ l.dec }}">−</button><span style="width:34px;text-align:center;font-weight:600;font-size:14px">{{ l.qty }}</span><button class="btn" style="width:32px;height:32px;justify-content:center" onClick="{{ l.inc }}">+</button></div><button class="btn btn-ghost" style="font-size:12px" onClick="{{ l.remove }}">Supprimer</button></div></div><strong style="font-family:var(--font-heading);font-size:18px;white-space:nowrap">{{ l.totalLabel }}</strong></div></sc-for>
+<div style="padding:18px;display:flex;gap:10px;align-items:flex-end"><div class="field" style="flex:1;max-width:280px"><label>Code promo</label><input class="input" style="border-radius:4px" placeholder="RENTREE26" /></div><button class="btn btn-secondary" style="border-radius:4px;padding:9px 16px">Appliquer</button></div>
+</div>
+<aside style="background:var(--color-neutral-100);border-radius:4px;padding:24px;box-shadow:var(--shadow-sm)"><h4 style="margin:0 0 16px">Récapitulatif</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:14px;border-bottom:2px solid var(--color-divider);padding-bottom:16px"><div style="display:flex"><span style="opacity:.65">Sous-total</span><span style="margin-left:auto;font-weight:600">{{ subtotalLabel }}</span></div><div style="display:flex"><span style="opacity:.65">Livraison estimée (Abidjan)</span><span style="margin-left:auto;font-weight:600">{{ shippingLabel }}</span></div><div style="display:flex"><span style="opacity:.65">Remise lot</span><span style="margin-left:auto;font-weight:600;color:var(--color-accent-700)">{{ discountLabel }}</span></div></div><div style="display:flex;align-items:baseline;padding:16px 0 20px"><span style="font-family:var(--font-heading);font-weight:800;font-size:16px">Total</span><strong style="margin-left:auto;font-family:var(--font-heading);font-size:26px">{{ totalLabel }}</strong></div><button class="btn btn-primary" style="width:100%;border-radius:4px;justify-content:flex-start;padding:13px 18px;font-size:15px" onClick="{{ goCheckout }}">Passer la commande</button><button class="btn btn-secondary" style="width:100%;border-radius:4px;justify-content:flex-start;padding:13px 18px;margin-top:10px" onClick="{{ goList }}">Continuer mes achats</button><p style="font-size:11px;opacity:.55;margin:16px 0 0">Paiement Orange Money, MTN MoMo, Wave, Moov Money, carte bancaire ou à la livraison.</p></aside>
+</div></sc-if></section>
+</sc-if>
+
+<sc-if value="{{ isCheckout }}">
+<section style="padding:26px 80px 12px"><h1 style="margin:0 0 20px;font-size:32px">Commande</h1>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--color-divider);margin-bottom:32px"><sc-for list="{{ steps }}" as="s" hint-placeholder-count="4"><div style="background:var(--color-neutral-100)"><sc-if value="{{ s.actif }}" hint-placeholder-val="{{ true }}"><div style="padding:14px 18px;border-top:4px solid var(--color-accent);display:flex;gap:10px;align-items:baseline;color:var(--color-accent)"><span style="font-family:var(--font-heading);font-weight:800;font-size:13px">{{ s.num }}</span><span style="font-size:13px;font-weight:600">{{ s.nom }}</span><span style="margin-left:auto;font-size:11px;opacity:.6;color:var(--color-text)">{{ s.etat }}</span></div></sc-if><sc-if value="{{ s.inactif }}"><div style="padding:14px 18px;border-top:4px solid transparent;display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--font-heading);font-weight:800;font-size:13px">{{ s.num }}</span><span style="font-size:13px;font-weight:600">{{ s.nom }}</span><span style="margin-left:auto;font-size:11px;opacity:.5">{{ s.etat }}</span></div></sc-if></div></sc-for></div></section>
+<section style="display:grid;grid-template-columns:1fr 380px;gap:36px;padding:0 80px 64px;align-items:start">
+<div style="background:var(--color-neutral-100);border-radius:4px;padding:28px;box-shadow:var(--shadow-sm)">
+<sc-if value="{{ step1 }}"><h3 style="margin:0 0 6px">1. Identification</h3><p style="opacity:.65;font-size:14px">Connectez-vous, créez un compte, ou commandez en tant qu'invité.</p><div style="display:flex;flex-direction:column;gap:12px;max-width:520px;margin-top:18px"><label class="radio"><input type="radio" name="ident" checked /><span class="dot"></span>Je commande en tant qu'invité</label><label class="radio"><input type="radio" name="ident" /><span class="dot"></span>J'ai déjà un compte G2Y</label><label class="radio"><input type="radio" name="ident" /><span class="dot"></span>Je crée un compte</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px"><div class="field"><label>Nom et prénoms</label><input class="input" style="border-radius:4px" placeholder="Koffi Aya" /></div><div class="field"><label>Téléphone</label><input class="input" style="border-radius:4px" placeholder="+225 07 00 00 00 00" /></div><div class="field" style="grid-column:span 2"><label>E-mail (facture)</label><input class="input" style="border-radius:4px" placeholder="nom@exemple.ci" /></div></div></div></sc-if>
+<sc-if value="{{ step2 }}"><h3 style="margin:0 0 6px">2. Livraison ou retrait</h3><div style="display:flex;gap:14px;margin:18px 0"><label class="radio"><input type="radio" name="mode" checked /><span class="dot"></span>Livraison à domicile</label><label class="radio"><input type="radio" name="mode" /><span class="dot"></span>Retrait en boutique (Cocody Angré)</label></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:560px"><div class="field"><label>Ville</label><select class="input" style="border-radius:4px"><option>Abidjan</option><option>Bouaké</option><option>Yamoussoukro</option><option>San-Pédro</option><option>Korhogo</option></select></div><div class="field"><label>Commune / quartier</label><input class="input" style="border-radius:4px" placeholder="Cocody, Angré 8e tranche" /></div><div class="field" style="grid-column:span 2"><label>Adresse et repère</label><input class="input" style="border-radius:4px" placeholder="Rue des Jardins, en face de la pharmacie" /></div><div class="field" style="grid-column:span 2"><label>Instructions pour le livreur</label><textarea class="input" style="border-radius:4px" placeholder="Appeler à l'arrivée"></textarea></div></div></sc-if>
+<sc-if value="{{ step3 }}"><h3 style="margin:0 0 6px">3. Mode de livraison et créneau</h3><div style="display:flex;flex-direction:column;gap:2px;background:var(--color-divider);margin-top:18px"><label style="display:flex;gap:12px;align-items:center;background:var(--color-neutral-100);padding:16px;cursor:pointer"><input type="radio" name="liv" checked style="accent-color:var(--color-accent)" /><span><strong style="font-family:var(--font-heading);font-size:14px;display:block">Express Abidjan — sous 24 h</strong><span style="font-size:12px;opacity:.6">Créneau 8 h–12 h ou 14 h–18 h</span></span><strong style="margin-left:auto">2 000 FCFA</strong></label><label style="display:flex;gap:12px;align-items:center;background:var(--color-neutral-100);padding:16px;cursor:pointer"><input type="radio" name="liv" style="accent-color:var(--color-accent)" /><span><strong style="font-family:var(--font-heading);font-size:14px;display:block">Standard Abidjan — 48 à 72 h</strong><span style="font-size:12px;opacity:.6">Créneau au choix</span></span><strong style="margin-left:auto">1 000 FCFA</strong></label><label style="display:flex;gap:12px;align-items:center;background:var(--color-neutral-100);padding:16px;cursor:pointer"><input type="radio" name="liv" style="accent-color:var(--color-accent)" /><span><strong style="font-family:var(--font-heading);font-size:14px;display:block">Intérieur du pays — 72 h</strong><span style="font-size:12px;opacity:.6">Via partenaire transport</span></span><strong style="margin-left:auto">4 500 FCFA</strong></label><label style="display:flex;gap:12px;align-items:center;background:var(--color-neutral-100);padding:16px;cursor:pointer"><input type="radio" name="liv" style="accent-color:var(--color-accent)" /><span><strong style="font-family:var(--font-heading);font-size:14px;display:block">Retrait en boutique</strong><span style="font-size:12px;opacity:.6">Cocody Angré · sous 2 h</span></span><strong style="margin-left:auto">Gratuit</strong></label></div></sc-if>
+<sc-if value="{{ step4 }}"><h3 style="margin:0 0 6px">4. Paiement</h3><p style="opacity:.65;font-size:14px">Choisissez votre moyen de paiement. Transaction chiffrée.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-divider);margin-top:18px"><sc-for list="{{ paiements }}" as="m" hint-placeholder-count="6"><label style="display:flex;gap:12px;align-items:center;background:var(--color-neutral-100);padding:16px;cursor:pointer"><input type="radio" name="pay" style="accent-color:var(--color-accent)" /><span><strong style="font-family:var(--font-heading);font-size:14px;display:block">{{ m.nom }}</strong><span style="font-size:12px;opacity:.6">{{ m.note }}</span></span></label></sc-for></div><div class="field" style="max-width:320px;margin-top:20px"><label>Numéro mobile money</label><input class="input" style="border-radius:4px" placeholder="+225 07 00 00 00 00" /></div></sc-if>
+<div style="display:flex;gap:12px;margin-top:28px;border-top:2px solid var(--color-divider);padding-top:20px"><button class="btn btn-secondary" style="border-radius:4px;padding:12px 18px" onClick="{{ prevStep }}">Retour</button><button class="btn btn-primary" style="border-radius:4px;padding:12px 22px;font-size:15px" onClick="{{ nextStep }}">{{ nextLabel }}</button></div>
+</div>
+<aside style="background:var(--color-neutral-100);border-radius:4px;padding:24px;box-shadow:var(--shadow-sm)"><h4 style="margin:0 0 16px">Récapitulatif</h4><div style="display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--color-divider);padding-bottom:16px"><sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2"><div style="display:flex;gap:12px;align-items:center"><div style="width:48px;height:48px;flex:none;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 7px,var(--color-neutral-300) 7px 14px);border-radius:4px"></div><span style="font-size:13px;line-height:1.25">{{ l.nom }}<span style="display:block;opacity:.55;font-size:11px">× {{ l.qty }}</span></span><strong style="margin-left:auto;font-size:13px;white-space:nowrap">{{ l.totalLabel }}</strong></div></sc-for></div><div style="display:flex;flex-direction:column;gap:9px;font-size:14px;padding:16px 0;border-bottom:2px solid var(--color-divider)"><div style="display:flex"><span style="opacity:.65">Sous-total</span><span style="margin-left:auto;font-weight:600">{{ subtotalLabel }}</span></div><div style="display:flex"><span style="opacity:.65">Livraison</span><span style="margin-left:auto;font-weight:600">{{ shippingLabel }}</span></div><div style="display:flex"><span style="opacity:.65">Remise lot</span><span style="margin-left:auto;font-weight:600;color:var(--color-accent-700)">{{ discountLabel }}</span></div></div><div style="display:flex;align-items:baseline;padding-top:16px"><span style="font-family:var(--font-heading);font-weight:800;font-size:16px">Total à payer</span><strong style="margin-left:auto;font-family:var(--font-heading);font-size:26px">{{ totalLabel }}</strong></div></aside>
+</section>
+</sc-if>
+
+<sc-if value="{{ isDone }}">
+<section style="padding:56px 80px 64px"><div style="display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:start">
+<div><span style="display:inline-block;background:var(--color-accent);color:var(--color-neutral-100);font-size:11px;letter-spacing:.14em;padding:5px 12px;margin-bottom:20px">COMMANDE CONFIRMÉE</span><h1 style="margin:0 0 12px;font-size:44px;line-height:1.02;max-width:20ch">Merci, votre commande est enregistrée.</h1><p style="font-size:16px;opacity:.7;max-width:56ch">Un SMS de confirmation a été envoyé au numéro indiqué. Vous pouvez suivre la préparation depuis votre compte.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-divider);margin:28px 0"><div style="background:var(--color-neutral-100);padding:18px"><span style="font-size:11px;letter-spacing:.08em;opacity:.55;text-transform:uppercase">Commande</span><strong style="display:block;font-family:var(--font-heading);font-size:18px;margin-top:4px">{{ orderNo }}</strong></div><div style="background:var(--color-neutral-100);padding:18px"><span style="font-size:11px;letter-spacing:.08em;opacity:.55;text-transform:uppercase">Montant payé</span><strong style="display:block;font-family:var(--font-heading);font-size:18px;margin-top:4px">{{ totalLabel }}</strong></div><div style="background:var(--color-neutral-100);padding:18px"><span style="font-size:11px;letter-spacing:.08em;opacity:.55;text-transform:uppercase">Livraison estimée</span><strong style="display:block;font-family:var(--font-heading);font-size:18px;margin-top:4px">Mardi 2 sept.</strong></div></div>
+<h4 style="margin:0 0 10px">Suivi</h4><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--color-divider)"><div style="background:var(--color-neutral-100);padding:14px;border-top:4px solid var(--color-accent)"><strong style="font-size:13px;font-family:var(--font-heading)">Payée</strong><span style="display:block;font-size:11px;opacity:.55">31 août, 14:02</span></div><div style="background:var(--color-neutral-100);padding:14px;border-top:4px solid var(--color-accent-300)"><strong style="font-size:13px;font-family:var(--font-heading)">En préparation</strong><span style="display:block;font-size:11px;opacity:.55">En cours</span></div><div style="background:var(--color-neutral-100);padding:14px;border-top:4px solid var(--color-neutral-300)"><strong style="font-size:13px;font-family:var(--font-heading);opacity:.5">Expédiée</strong><span style="display:block;font-size:11px;opacity:.4">—</span></div><div style="background:var(--color-neutral-100);padding:14px;border-top:4px solid var(--color-neutral-300)"><strong style="font-size:13px;font-family:var(--font-heading);opacity:.5">Livrée</strong><span style="display:block;font-size:11px;opacity:.4">—</span></div></div>
+<div style="display:flex;gap:12px;margin-top:28px"><button class="btn btn-primary" style="border-radius:4px;padding:12px 20px">Voir ma commande</button><button class="btn btn-secondary" style="border-radius:4px;padding:12px 20px" onClick="{{ goHome }}">Retour à la boutique</button></div></div>
+<aside style="background:var(--color-neutral-100);border-radius:4px;padding:24px;box-shadow:var(--shadow-sm)"><h4 style="margin:0 0 14px">Détail</h4><div style="display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--color-divider);padding-bottom:16px"><sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2"><div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;flex:none;background:repeating-linear-gradient(135deg,var(--color-neutral-200) 0 7px,var(--color-neutral-300) 7px 14px);border-radius:4px"></div><span style="font-size:13px;line-height:1.25">{{ l.nom }}<span style="display:block;opacity:.55;font-size:11px">× {{ l.qty }}</span></span><strong style="margin-left:auto;font-size:13px">{{ l.totalLabel }}</strong></div></sc-for></div><div style="padding:16px 0;border-bottom:1px solid var(--color-divider)"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.55">Adresse de livraison</span><p style="font-size:13px;margin:6px 0 0">Koffi Aya<br />Cocody, Angré 8e tranche<br />Rue des Jardins, en face de la pharmacie<br />Abidjan · +225 07 00 00 00 00</p></div><div style="padding-top:16px"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.55">Paiement</span><p style="font-size:13px;margin:6px 0 0">Wave · {{ totalLabel }}</p></div></aside>
+</div></section>
+</sc-if>
+
+<footer style="background:var(--color-text);color:var(--color-neutral-100);padding:48px 80px 28px">
+<div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.18)">
+<div><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="display:grid;place-items:center;width:34px;height:34px;background:var(--color-accent);font-family:var(--font-heading);font-weight:800;font-size:15px">G2</span><strong style="font-family:var(--font-heading);font-size:16px">G2Y CONSEIL</strong></div><p style="font-size:13px;opacity:.7;max-width:38ch">Matériel de bureau et scolaire à Abidjan. Fournisseur des entreprises, écoles et administrations depuis 2015.</p><p style="font-size:13px;opacity:.7;margin:0">Cocody Angré 8e tranche, Abidjan<br />+225 27 22 00 00 00 · contact@g2yconseil.ci<br />Lun–Ven 8 h–18 h · Sam 9 h–14 h</p></div>
+<div><h6 style="margin:0 0 12px;color:var(--color-accent-400)">Boutique</h6><div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;opacity:.75">Papeterie</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;opacity:.75">Livres et manuels</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;opacity:.75">Mobilier de bureau</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;opacity:.75">Consommables d'impression</a><a href="#" onClick="{{ goList }}" style="color:inherit;text-decoration:none;opacity:.75">Informatique</a></div></div>
+<div><h6 style="margin:0 0 12px;color:var(--color-accent-400)">Aide</h6><div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><a href="#" style="color:inherit;text-decoration:none;opacity:.75">Livraison et retours</a><a href="#" style="color:inherit;text-decoration:none;opacity:.75">Suivi de commande</a><a href="#" style="color:inherit;text-decoration:none;opacity:.75">FAQ</a><a href="#" style="color:inherit;text-decoration:none;opacity:.75">Contact</a><a href="#" style="color:inherit;text-decoration:none;opacity:.75">Devis entreprise</a></div></div>
+<div><h6 style="margin:0 0 12px;color:var(--color-accent-400)">Paiement</h6><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">Orange Money</span><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">MTN MoMo</span><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">Wave</span><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">Moov Money</span><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">Carte bancaire</span><span style="border:1px solid rgba(255,255,255,.3);font-size:11px;padding:4px 8px">À la livraison</span></div><h6 style="margin:20px 0 10px;color:var(--color-accent-400)">Suivez-nous</h6><div style="display:flex;gap:8px;font-size:12px"><span style="border:1px solid rgba(255,255,255,.3);padding:5px 9px">Facebook</span><span style="border:1px solid rgba(255,255,255,.3);padding:5px 9px">Instagram</span><span style="border:1px solid rgba(255,255,255,.3);padding:5px 9px">LinkedIn</span></div></div>
+</div>
+<div style="display:flex;gap:24px;font-size:11px;opacity:.55;padding-top:18px"><span>© 2026 G2Y Conseil — RCCM CI-ABJ-2015-B-00000</span><span style="margin-left:auto">Mentions légales</span><span>CGV</span><span>Confidentialité</span></div>
+</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000}}">
+const CATS = [
+  { nom: 'Papeterie', icone: '✎', compte: 148 },
+  { nom: 'Livres et manuels scolaires', icone: '▤', compte: 92 },
+  { nom: 'Mobilier de bureau', icone: '▭', compte: 64 },
+  { nom: 'Fournitures scolaires', icone: '✚', compte: 121 },
+  { nom: "Consommables d'impression", icone: '◧', compte: 76 },
+  { nom: 'Rangement et classement', icone: '▦', compte: 58 },
+  { nom: 'Informatique', icone: '⌨', compte: 83 }
+];
+
+const PRODUCTS = [
+  { id: 'p1', nom: 'Cahier 200 pages grands carreaux', cat: 'Papeterie', prix: 1500, barre: 1800, note: 4.5, avis: 132, ref: 'CAH-200-GC', badge: 'PROMO', stock: 'En stock — 240 unités' },
+  { id: 'p2', nom: 'Ramette papier A4 80 g (500 f.)', cat: 'Papeterie', prix: 3500, barre: 4200, note: 4.7, avis: 214, ref: 'RAM-A4-80', badge: '−17 %', stock: 'En stock — 96 cartons' },
+  { id: 'p3', nom: 'Lot de 50 stylos bille bleus', cat: 'Papeterie', prix: 12000, barre: 0, note: 4.3, avis: 87, ref: 'STY-B50', badge: 'LOT', stock: 'En stock' },
+  { id: 'p4', nom: 'Pack scolaire CP complet', cat: 'Fournitures scolaires', prix: 15900, barre: 19500, note: 4.8, avis: 341, ref: 'PACK-CP', badge: 'RENTRÉE', stock: 'En stock — 58 packs' },
+  { id: 'p5', nom: 'Chaise de bureau ergonomique', cat: 'Mobilier de bureau', prix: 65000, barre: 78000, note: 4.4, avis: 46, ref: 'MOB-CH-ERG', badge: '−17 %', stock: 'En stock — 12 unités' },
+  { id: 'p6', nom: 'Toner HP 85A compatible', cat: "Consommables d'impression", prix: 42000, barre: 0, note: 4.2, avis: 63, ref: 'TON-85A', badge: 'NOUVEAU', stock: 'Stock limité — 6 unités' },
+  { id: 'p7', nom: 'Bureau droit 120 cm chêne', cat: 'Mobilier de bureau', prix: 145000, barre: 165000, note: 4.6, avis: 28, ref: 'MOB-BUR-120', badge: 'PROMO', stock: 'Sur commande — 5 jours' },
+  { id: 'p8', nom: 'Armoire métallique 2 portes', cat: 'Rangement et classement', prix: 185000, barre: 0, note: 4.5, avis: 19, ref: 'RAN-ARM-2P', badge: 'NOUVEAU', stock: 'En stock — 8 unités' },
+  { id: 'p9', nom: 'Boîte à archives dos 10 cm (lot 10)', cat: 'Rangement et classement', prix: 9500, barre: 11000, note: 4.1, avis: 54, ref: 'RAN-ARC-10', badge: 'LOT', stock: 'En stock' },
+  { id: 'p10', nom: 'Calculatrice scientifique 240 fonctions', cat: 'Informatique', prix: 9500, barre: 0, note: 4.6, avis: 118, ref: 'INF-CAL-240', badge: 'NOUVEAU', stock: 'En stock — 74 unités' },
+  { id: 'p11', nom: 'Clé USB 32 Go', cat: 'Informatique', prix: 8000, barre: 9500, note: 4.4, avis: 205, ref: 'INF-USB-32', badge: '−16 %', stock: 'En stock' },
+  { id: 'p12', nom: 'Manuel de mathématiques 3e', cat: 'Livres et manuels scolaires', prix: 6500, barre: 0, note: 4.7, avis: 76, ref: 'LIV-MAT-3E', badge: 'NOUVEAU', stock: 'En stock — 130 unités' }
+];
+
+const PAIEMENTS = [
+  { nom: 'Orange Money', note: 'Validation par code USSD' },
+  { nom: 'MTN MoMo', note: 'Validation sur votre téléphone' },
+  { nom: 'Wave', note: 'Sans frais pour le client' },
+  { nom: 'Moov Money', note: 'Validation par code USSD' },
+  { nom: 'Carte bancaire', note: 'Visa, Mastercard — 3-D Secure' },
+  { nom: 'Paiement à la livraison', note: 'Espèces, Abidjan uniquement' }
+];
+
+const AVIS = [
+  { etoiles: '★★★★★', texte: "Commande de 40 cartons de ramettes livrée le lendemain à Marcory. Facture conforme, rien à redire.", auteur: 'Cabinet Diomandé & Associés', lieu: 'Marcory' },
+  { etoiles: '★★★★★', texte: "Les packs scolaires m'ont fait gagner un temps fou pour mes trois enfants. Paiement Wave en deux clics.", auteur: 'Aya K.', lieu: 'Cocody' },
+  { etoiles: '★★★★☆', texte: "Bon rapport qualité-prix sur le mobilier. Le montage de l'armoire a demandé un peu de patience.", auteur: 'Groupe scolaire Les Palmiers', lieu: 'Yopougon' }
+];
+
+class Component extends DCLogic {
+  state = { screen: 'home', productId: 'p4', qty: 1, cart: [{ id: 'p4', qty: 1 }, { id: 'p2', qty: 3 }], step: 1, sort: 'pertinence', tab: 'desc' };
+
+  fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA'; }
+  etoiles(n) { const f = Math.round(n); return '★★★★★'.slice(0, f) + '☆☆☆☆☆'.slice(0, 5 - f); }
+  go(screen) { return () => { this.setState({ screen }); window.scrollTo(0, 0); }; }
+
+  deco(p) {
+    return Object.assign({}, p, {
+      prixLabel: this.fmt(p.prix),
+      prixBarreLabel: p.barre ? this.fmt(p.barre) : '',
+      remise: p.barre ? '−' + Math.round((1 - p.prix / p.barre) * 100) + ' %' : 'Prix direct',
+      etoiles: this.etoiles(p.note),
+      onOpen: (e) => { if (e) e.preventDefault(); this.setState({ screen: 'product', productId: p.id, qty: 1, tab: 'desc' }); window.scrollTo(0, 0); },
+      onAdd: (e) => { if (e) e.preventDefault(); this.add(p.id, 1); }
+    });
+  }
+
+  add(id, n) {
+    this.setState(s => {
+      const cart = s.cart.map(l => Object.assign({}, l));
+      const line = cart.find(l => l.id === id);
+      if (line) line.qty += n; else cart.push({ id, qty: n });
+      return { cart };
+    });
+  }
+
+  setQty(id, delta) {
+    this.setState(s => ({ cart: s.cart.map(l => l.id === id ? { id, qty: Math.max(1, l.qty + delta) } : l) }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const find = id => PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+    const product = this.deco(find(s.productId));
+
+    let list = PRODUCTS.slice(0, 9);
+    if (s.sort === 'asc') list = list.slice().sort((a, b) => a.prix - b.prix);
+    if (s.sort === 'desc') list = list.slice().sort((a, b) => b.prix - a.prix);
+    if (s.sort === 'new') list = list.slice().reverse();
+
+    const lines = s.cart.map(l => {
+      const p = find(l.id);
+      return {
+        nom: p.nom, ref: p.ref, qty: l.qty, prixLabel: this.fmt(p.prix), totalLabel: this.fmt(p.prix * l.qty),
+        inc: () => this.setQty(l.id, 1), dec: () => this.setQty(l.id, -1),
+        remove: () => this.setState(st => ({ cart: st.cart.filter(x => x.id !== l.id) }))
+      };
+    });
+    const subtotal = s.cart.reduce((t, l) => t + find(l.id).prix * l.qty, 0);
+    const shipping = subtotal > 0 ? 2000 : 0;
+    const discount = subtotal >= 50000 ? Math.round(subtotal * 0.05) : 0;
+
+    const stepNames = ['Identification', 'Livraison', 'Mode et créneau', 'Paiement'];
+    const steps = stepNames.map((nom, i) => ({
+      num: '0' + (i + 1), nom,
+      actif: i + 1 === s.step, inactif: i + 1 !== s.step,
+      etat: i + 1 < s.step ? 'Validée' : (i + 1 === s.step ? 'En cours' : 'À venir')
+    }));
+
+    return {
+      isHome: s.screen === 'home', isList: s.screen === 'list', isProduct: s.screen === 'product',
+      isCart: s.screen === 'cart', isCheckout: s.screen === 'checkout', isDone: s.screen === 'done',
+      goHome: (e) => { if (e) e.preventDefault(); this.go('home')(); },
+      goList: (e) => { if (e) e.preventDefault(); this.setState({ screen: 'list' }); window.scrollTo(0, 0); },
+      goCart: (e) => { if (e) e.preventDefault(); this.go('cart')(); },
+      goCheckout: (e) => { if (e) e.preventDefault(); this.setState({ screen: 'checkout', step: 1 }); window.scrollTo(0, 0); },
+      cats: CATS.map(c => Object.assign({}, c, { onOpen: (e) => { if (e) e.preventDefault(); this.setState({ screen: 'list' }); window.scrollTo(0, 0); } })),
+      bestSellers: [PRODUCTS[3], PRODUCTS[1], PRODUCTS[0], PRODUCTS[4]].map(p => this.deco(p)),
+      newArrivals: [PRODUCTS[5], PRODUCTS[7], PRODUCTS[9], PRODUCTS[11]].map(p => this.deco(p)),
+      avisClients: AVIS,
+      listProducts: list.map(p => this.deco(p)),
+      listCount: list.length,
+      onSort: (e) => this.setState({ sort: e.target.value }),
+      product: Object.assign({}, product, {
+        description: "Format 17 × 22 cm, couverture polypropylène résistante à l'humidité, papier 70 g grands carreaux Seyès. Conçu pour l'année scolaire complète, conforme aux programmes du primaire et du collège en Côte d'Ivoire.",
+        contenu: ['1 cahier 200 pages', '1 protège-cahier transparent', "2 étiquettes d'identification", 'Livré à plat, sans pliure'],
+        specs: [{ k: 'Format', v: '17 × 22 cm' }, { k: 'Pages', v: '200' }, { k: 'Grammage', v: '70 g/m²' }, { k: 'Réglure', v: 'Grands carreaux Seyès' }, { k: 'Couverture', v: 'Polypropylène 300 µ' }, { k: 'Origine', v: 'Importé — normes UE' }]
+      }),
+      similar: [PRODUCTS[0], PRODUCTS[2], PRODUCTS[9], PRODUCTS[10]].map(p => this.deco(p)),
+      qty: s.qty,
+      incQty: () => this.setState(st => ({ qty: st.qty + 1 })),
+      decQty: () => this.setState(st => ({ qty: Math.max(1, st.qty - 1) })),
+      addCurrent: () => this.add(s.productId, s.qty),
+      buyNow: () => { this.add(s.productId, s.qty); this.setState({ screen: 'checkout', step: 1 }); window.scrollTo(0, 0); },
+      setTabDesc: () => this.setState({ tab: 'desc' }), setTabCarac: () => this.setState({ tab: 'carac' }),
+      setTabLiv: () => this.setState({ tab: 'liv' }), setTabAvis: () => this.setState({ tab: 'avis' }),
+      cartLines: lines, cartCount: s.cart.reduce((t, l) => t + l.qty, 0),
+      cartEmpty: s.cart.length === 0, cartFilled: s.cart.length > 0,
+      subtotalLabel: this.fmt(subtotal), shippingLabel: shipping ? this.fmt(shipping) : 'Gratuit',
+      discountLabel: discount ? '−' + this.fmt(discount) : '—',
+      totalLabel: this.fmt(subtotal + shipping - discount),
+      steps, step1: s.step === 1, step2: s.step === 2, step3: s.step === 3, step4: s.step === 4,
+      nextLabel: s.step === 4 ? 'Payer ' + this.fmt(subtotal + shipping - discount) : 'Continuer',
+      nextStep: () => { if (s.step === 4) { this.setState({ screen: 'done' }); } else { this.setState({ step: s.step + 1 }); } window.scrollTo(0, 0); },
+      prevStep: () => { if (s.step === 1) { this.setState({ screen: 'cart' }); } else { this.setState({ step: s.step - 1 }); } window.scrollTo(0, 0); },
+      paiements: PAIEMENTS,
+      orderNo: 'G2Y-2026-04871'
+    };
+  }
+}
+
+</script>
+</body>
+</html>
