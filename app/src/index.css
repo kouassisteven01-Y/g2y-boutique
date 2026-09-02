@@ -153,6 +153,8 @@ textarea.input { min-height: 90px; resize: vertical; font-family: inherit; }
 }
 .tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
 .tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-success { background: #e8f5ea; color: #1a7f37; }
+.tag-warning { background: #fdf2e2; color: #a15c00; }
 
 /* — tables — */
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }

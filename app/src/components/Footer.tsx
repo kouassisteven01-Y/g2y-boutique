@@ -57,6 +57,7 @@ export default function Footer() {
         <span style={{ marginLeft: 'auto' }}>Mentions légales</span>
         <span>CGV</span>
         <span>Confidentialité</span>
+        <Link to="/gestion" style={{ color: 'inherit', textDecoration: 'none' }}>Espace pro</Link>
       </div>
     </footer>
   );
