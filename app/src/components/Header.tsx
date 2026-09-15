@@ -1,19 +1,33 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../lib/CartContext';
+import { CATS } from '../lib/data';
 
 const CATEGORY_LINKS = [
-  'Papeterie',
-  'Livres et manuels',
-  'Mobilier de bureau',
-  'Fournitures scolaires',
-  "Consommables d'impression",
-  'Rangement et classement',
-  'Informatique',
+  { label: 'Papeterie', cat: 'Papeterie' },
+  { label: 'Livres et manuels', cat: 'Livres et manuels scolaires' },
+  { label: 'Mobilier de bureau', cat: 'Mobilier de bureau' },
+  { label: 'Fournitures scolaires', cat: 'Fournitures scolaires' },
+  { label: "Consommables d'impression", cat: "Consommables d'impression" },
+  { label: 'Rangement et classement', cat: 'Rangement et classement' },
+  { label: 'Informatique', cat: 'Informatique' },
 ];
 
 export default function Header() {
   const navigate = useNavigate();
   const { cartCount, subtotalLabel } = useCart();
+  const [params] = useSearchParams();
+  const activeCat = params.get('cat');
+  const [query, setQuery] = useState('');
+  const [searchCat, setSearchCat] = useState('');
+
+  const submitSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const qs = new URLSearchParams();
+    if (query.trim()) qs.set('q', query.trim());
+    if (searchCat) qs.set('cat', searchCat);
+    navigate(`/produits${qs.toString() ? '?' + qs.toString() : ''}`);
+  };
 
   return (
     <>
@@ -35,22 +49,19 @@ export default function Header() {
           </Link>
           <form
             style={{ flex: 1, display: 'flex', border: '1px solid var(--color-divider)', borderRadius: 4, overflow: 'hidden', background: 'var(--color-bg)', maxWidth: 620 }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              navigate('/produits');
-            }}
+            onSubmit={submitSearch}
           >
-            <select className="input" style={{ width: 200, border: 0, borderRight: '1px solid var(--color-divider)', borderRadius: 0, background: 'transparent', fontSize: 13 }}>
-              <option>Toutes catégories</option>
-              <option>Papeterie</option>
-              <option>Livres et manuels</option>
-              <option>Mobilier de bureau</option>
-              <option>Fournitures scolaires</option>
-              <option>Consommables d'impression</option>
-              <option>Rangement et classement</option>
-              <option>Informatique</option>
+            <select className="input" style={{ width: 200, border: 0, borderRight: '1px solid var(--color-divider)', borderRadius: 0, background: 'transparent', fontSize: 13 }} value={searchCat} onChange={(e) => setSearchCat(e.target.value)}>
+              <option value="">Toutes catégories</option>
+              {CATS.map((c) => <option key={c.nom} value={c.nom}>{c.nom}</option>)}
             </select>
-            <input className="input" style={{ border: 0, borderRadius: 0, background: 'transparent' }} placeholder="Rechercher un article, une référence…" />
+            <input
+              className="input"
+              style={{ border: 0, borderRadius: 0, background: 'transparent' }}
+              placeholder="Rechercher un article, une référence…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
             <button className="btn btn-primary" style={{ borderRadius: 0, paddingInline: 20 }} type="submit">Rechercher</button>
           </form>
           <a href="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'inherit', fontSize: 13 }}>
@@ -68,16 +79,16 @@ export default function Header() {
           </Link>
         </div>
         <nav style={{ display: 'flex', gap: 28, padding: '0 80px 12px', fontSize: 13 }}>
-          {CATEGORY_LINKS.map((label, i) => (
+          {CATEGORY_LINKS.map((item) => (
             <Link
-              key={label}
-              to="/produits"
-              style={i === 0 ? { color: 'var(--color-accent)', textDecoration: 'none', fontWeight: 600 } : { color: 'inherit', textDecoration: 'none' }}
+              key={item.cat}
+              to={`/produits?cat=${encodeURIComponent(item.cat)}`}
+              style={activeCat === item.cat ? { color: 'var(--color-accent)', textDecoration: 'none', fontWeight: 600 } : { color: 'inherit', textDecoration: 'none' }}
             >
-              {label}
+              {item.label}
             </Link>
           ))}
-          <Link to="/produits" style={{ color: 'inherit', textDecoration: 'none', marginLeft: 'auto', opacity: 0.6 }}>Promotions</Link>
+          <Link to="/produits?promo=1" style={{ color: 'inherit', textDecoration: 'none', marginLeft: 'auto', opacity: 0.6 }}>Promotions</Link>
         </nav>
       </header>
     </>

@@ -53,7 +53,7 @@ export default function Home() {
           {CATS.map((c) => (
             <Link
               key={c.nom}
-              to="/produits"
+              to={`/produits?cat=${encodeURIComponent(c.nom)}`}
               style={{ background: 'var(--color-neutral-100)', padding: '22px 20px 20px', textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', gap: 10, minHeight: 118 }}
             >
               <span style={{ fontSize: 22, color: 'var(--color-accent)' }}>{c.icone}</span>

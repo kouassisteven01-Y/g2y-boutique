@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Placeholder from '../components/Placeholder';
 import { PAIEMENTS, findProduct, fmt } from '../lib/data';
-import { useCart } from '../lib/CartContext';
+import { SHIPPING_OPTIONS, useCart } from '../lib/CartContext';
 
 const STEP_NAMES = ['Identification', 'Livraison', 'Mode et créneau', 'Paiement'];
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, subtotalLabel, shippingLabel, discountLabel, totalLabel } = useCart();
+  const { cart, subtotalLabel, shippingLabel, discountLabel, totalLabel, shippingOptionId, setShippingOption } = useCart();
   const [step, setStep] = useState(1);
 
   const steps = STEP_NAMES.map((nom, i) => ({
@@ -96,19 +96,20 @@ export default function Checkout() {
             <>
               <h3 style={{ margin: '0 0 6px' }}>3. Mode de livraison et créneau</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2, background: 'var(--color-divider)', marginTop: 18 }}>
-                {[
-                  { titre: 'Express Abidjan — sous 24 h', note: 'Créneau 8 h–12 h ou 14 h–18 h', prix: '2 000 FCFA', checked: true },
-                  { titre: 'Standard Abidjan — 48 à 72 h', note: 'Créneau au choix', prix: '1 000 FCFA' },
-                  { titre: 'Intérieur du pays — 72 h', note: 'Via partenaire transport', prix: '4 500 FCFA' },
-                  { titre: 'Retrait en boutique', note: 'Cocody Angré · sous 2 h', prix: 'Gratuit' },
-                ].map((o) => (
-                  <label key={o.titre} style={{ display: 'flex', gap: 12, alignItems: 'center', background: 'var(--color-neutral-100)', padding: 16, cursor: 'pointer' }}>
-                    <input type="radio" name="liv" defaultChecked={o.checked} style={{ accentColor: 'var(--color-accent)' }} />
+                {SHIPPING_OPTIONS.map((o) => (
+                  <label key={o.id} style={{ display: 'flex', gap: 12, alignItems: 'center', background: 'var(--color-neutral-100)', padding: 16, cursor: 'pointer' }}>
+                    <input
+                      type="radio"
+                      name="liv"
+                      checked={shippingOptionId === o.id}
+                      onChange={() => setShippingOption(o.id)}
+                      style={{ accentColor: 'var(--color-accent)' }}
+                    />
                     <span>
-                      <strong style={{ fontFamily: 'var(--font-heading)', fontSize: 14, display: 'block' }}>{o.titre}</strong>
+                      <strong style={{ fontFamily: 'var(--font-heading)', fontSize: 14, display: 'block' }}>{o.nom}</strong>
                       <span style={{ fontSize: 12, opacity: 0.6 }}>{o.note}</span>
                     </span>
-                    <strong style={{ marginLeft: 'auto' }}>{o.prix}</strong>
+                    <strong style={{ marginLeft: 'auto' }}>{o.prix ? fmt(o.prix) : 'Gratuit'}</strong>
                   </label>
                 ))}
               </div>

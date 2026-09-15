@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom';
 
 const PAYMENTS = ['Orange Money', 'MTN MoMo', 'Wave', 'Moov Money', 'Carte bancaire', 'À la livraison'];
 const SOCIALS = ['Facebook', 'Instagram', 'LinkedIn'];
-const BOUTIQUE_LINKS = ['Papeterie', 'Livres et manuels', 'Mobilier de bureau', "Consommables d'impression", 'Informatique'];
+const BOUTIQUE_LINKS = [
+  { label: 'Papeterie', cat: 'Papeterie' },
+  { label: 'Livres et manuels', cat: 'Livres et manuels scolaires' },
+  { label: 'Mobilier de bureau', cat: 'Mobilier de bureau' },
+  { label: "Consommables d'impression", cat: "Consommables d'impression" },
+  { label: 'Informatique', cat: 'Informatique' },
+];
 const AIDE_LINKS = ['Livraison et retours', 'Suivi de commande', 'FAQ', 'Contact', 'Devis entreprise'];
 
 export default function Footer() {
@@ -24,8 +30,8 @@ export default function Footer() {
         <div>
           <h6 style={{ margin: '0 0 12px', color: 'var(--color-accent-400)' }}>Boutique</h6>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 13 }}>
-            {BOUTIQUE_LINKS.map((label) => (
-              <Link key={label} to="/produits" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.75 }}>{label}</Link>
+            {BOUTIQUE_LINKS.map((item) => (
+              <Link key={item.cat} to={`/produits?cat=${encodeURIComponent(item.cat)}`} style={{ color: 'inherit', textDecoration: 'none', opacity: 0.75 }}>{item.label}</Link>
             ))}
           </div>
         </div>
