@@ -14,6 +14,8 @@ export interface Product {
   id: string;
   nom: string;
   cat: string;
+  sousCategorie: string;
+  marque: string;
   prix: number;
   barre: number;
   note: number;
@@ -47,18 +49,18 @@ export const CATS: Category[] = [
 ];
 
 export const PRODUCTS: Product[] = [
-  { id: 'p1', nom: 'Cahier 200 pages grands carreaux', cat: 'Papeterie', prix: 1500, barre: 1800, note: 4.5, avis: 132, ref: 'CAH-200-GC', badge: 'PROMO', stock: 'En stock — 240 unités', statut: 'Publié' },
-  { id: 'p2', nom: 'Ramette papier A4 80 g (500 f.)', cat: 'Papeterie', prix: 3500, barre: 4200, note: 4.7, avis: 214, ref: 'RAM-A4-80', badge: '−17 %', stock: 'En stock — 96 cartons', statut: 'Publié' },
-  { id: 'p3', nom: 'Lot de 50 stylos bille bleus', cat: 'Papeterie', prix: 12000, barre: 0, note: 4.3, avis: 87, ref: 'STY-B50', badge: 'LOT', stock: 'En stock', statut: 'Publié' },
-  { id: 'p4', nom: 'Pack scolaire CP complet', cat: 'Fournitures scolaires', prix: 15900, barre: 19500, note: 4.8, avis: 341, ref: 'PACK-CP', badge: 'RENTRÉE', stock: 'En stock — 58 packs', statut: 'Publié' },
-  { id: 'p5', nom: 'Chaise de bureau ergonomique', cat: 'Mobilier de bureau', prix: 65000, barre: 78000, note: 4.4, avis: 46, ref: 'MOB-CH-ERG', badge: '−17 %', stock: 'En stock — 12 unités', statut: 'Publié' },
-  { id: 'p6', nom: 'Toner HP 85A compatible', cat: "Consommables d'impression", prix: 42000, barre: 0, note: 4.2, avis: 63, ref: 'TON-85A', badge: 'NOUVEAU', stock: 'Épuisé — réassort en cours', statut: 'En rupture' },
-  { id: 'p7', nom: 'Bureau droit 120 cm chêne', cat: 'Mobilier de bureau', prix: 145000, barre: 165000, note: 4.6, avis: 28, ref: 'MOB-BUR-120', badge: 'PROMO', stock: 'Sur commande — 5 jours', statut: 'Publié' },
-  { id: 'p8', nom: 'Armoire métallique 2 portes', cat: 'Rangement et classement', prix: 185000, barre: 0, note: 4.5, avis: 19, ref: 'RAN-ARM-2P', badge: 'NOUVEAU', stock: 'En stock — 8 unités', statut: 'Brouillon' },
-  { id: 'p9', nom: 'Boîte à archives dos 10 cm (lot 10)', cat: 'Rangement et classement', prix: 9500, barre: 11000, note: 4.1, avis: 54, ref: 'RAN-ARC-10', badge: 'LOT', stock: 'En stock', statut: 'Publié' },
-  { id: 'p10', nom: 'Calculatrice scientifique 240 fonctions', cat: 'Informatique', prix: 9500, barre: 0, note: 4.6, avis: 118, ref: 'INF-CAL-240', badge: 'NOUVEAU', stock: 'En stock — 74 unités', statut: 'Publié' },
-  { id: 'p11', nom: 'Clé USB 32 Go', cat: 'Informatique', prix: 8000, barre: 9500, note: 4.4, avis: 205, ref: 'INF-USB-32', badge: '−16 %', stock: 'En stock', statut: 'Publié' },
-  { id: 'p12', nom: 'Manuel de mathématiques 3e', cat: 'Livres et manuels scolaires', prix: 6500, barre: 0, note: 4.7, avis: 76, ref: 'LIV-MAT-3E', badge: 'NOUVEAU', stock: 'En stock — 130 unités', statut: 'Brouillon' },
+  { id: 'p1', nom: 'Cahier 200 pages grands carreaux', cat: 'Papeterie', sousCategorie: 'Cahiers et blocs', marque: 'Clairefontaine', prix: 1500, barre: 1800, note: 4.5, avis: 132, ref: 'CAH-200-GC', badge: 'PROMO', stock: 'En stock — 240 unités', statut: 'Publié' },
+  { id: 'p2', nom: 'Ramette papier A4 80 g (500 f.)', cat: 'Papeterie', sousCategorie: 'Papier et ramettes', marque: 'Navigator', prix: 3500, barre: 4200, note: 4.7, avis: 214, ref: 'RAM-A4-80', badge: '−17 %', stock: 'En stock — 96 cartons', statut: 'Publié' },
+  { id: 'p3', nom: 'Lot de 50 stylos bille bleus', cat: 'Papeterie', sousCategorie: 'Stylos et écriture', marque: 'Bic', prix: 12000, barre: 0, note: 4.3, avis: 87, ref: 'STY-B50', badge: 'LOT', stock: 'En stock', statut: 'Publié' },
+  { id: 'p4', nom: 'Pack scolaire CP complet', cat: 'Fournitures scolaires', sousCategorie: 'Packs scolaires', marque: 'G2Y Conseil', prix: 15900, barre: 19500, note: 4.8, avis: 341, ref: 'PACK-CP', badge: 'RENTRÉE', stock: 'En stock — 58 packs', statut: 'Publié' },
+  { id: 'p5', nom: 'Chaise de bureau ergonomique', cat: 'Mobilier de bureau', sousCategorie: 'Sièges', marque: 'Actiflex', prix: 65000, barre: 78000, note: 4.4, avis: 46, ref: 'MOB-CH-ERG', badge: '−17 %', stock: 'En stock — 12 unités', statut: 'Publié' },
+  { id: 'p6', nom: 'Toner HP 85A compatible', cat: "Consommables d'impression", sousCategorie: 'Toners et cartouches', marque: 'HP', prix: 42000, barre: 0, note: 4.2, avis: 63, ref: 'TON-85A', badge: 'NOUVEAU', stock: 'Épuisé — réassort en cours', statut: 'En rupture' },
+  { id: 'p7', nom: 'Bureau droit 120 cm chêne', cat: 'Mobilier de bureau', sousCategorie: 'Bureaux', marque: 'Actiflex', prix: 145000, barre: 165000, note: 4.6, avis: 28, ref: 'MOB-BUR-120', badge: 'PROMO', stock: 'Sur commande — 5 jours', statut: 'Publié' },
+  { id: 'p8', nom: 'Armoire métallique 2 portes', cat: 'Rangement et classement', sousCategorie: 'Armoires', marque: 'Actiflex', prix: 185000, barre: 0, note: 4.5, avis: 19, ref: 'RAN-ARM-2P', badge: 'NOUVEAU', stock: 'En stock — 8 unités', statut: 'Brouillon' },
+  { id: 'p9', nom: 'Boîte à archives dos 10 cm (lot 10)', cat: 'Rangement et classement', sousCategorie: 'Boîtes et classement', marque: 'Exacompta', prix: 9500, barre: 11000, note: 4.1, avis: 54, ref: 'RAN-ARC-10', badge: 'LOT', stock: 'En stock', statut: 'Publié' },
+  { id: 'p10', nom: 'Calculatrice scientifique 240 fonctions', cat: 'Informatique', sousCategorie: 'Calcul', marque: 'Maped', prix: 9500, barre: 0, note: 4.6, avis: 118, ref: 'INF-CAL-240', badge: 'NOUVEAU', stock: 'En stock — 74 unités', statut: 'Publié' },
+  { id: 'p11', nom: 'Clé USB 32 Go', cat: 'Informatique', sousCategorie: 'Stockage', marque: 'SanDisk', prix: 8000, barre: 9500, note: 4.4, avis: 205, ref: 'INF-USB-32', badge: '−16 %', stock: 'En stock', statut: 'Publié' },
+  { id: 'p12', nom: 'Manuel de mathématiques 3e', cat: 'Livres et manuels scolaires', sousCategorie: 'Manuels scolaires', marque: 'Hachette', prix: 6500, barre: 0, note: 4.7, avis: 76, ref: 'LIV-MAT-3E', badge: 'NOUVEAU', stock: 'En stock — 130 unités', statut: 'Brouillon' },
 ];
 
 export const PAIEMENTS: PaymentMethod[] = [
